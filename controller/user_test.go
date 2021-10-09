@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	"github.com/hyperjiang/gin-skeleton/config"
+	"github.com/vzina/gin-skeleton/config"
 	"github.com/stretchr/testify/suite"
 )
 

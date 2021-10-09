@@ -1,4 +1,4 @@
-module github.com/hyperjiang/gin-skeleton
+module github.com/vzina/gin-skeleton
 
 go 1.16
 

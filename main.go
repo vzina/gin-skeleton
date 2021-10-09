@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 
 	"github.com/gin-gonic/gin"
-	"github.com/hyperjiang/gin-skeleton/config"
-	"github.com/hyperjiang/gin-skeleton/router"
+	"github.com/vzina/gin-skeleton/config"
+	"github.com/vzina/gin-skeleton/router"
 )
 
 func main() {
