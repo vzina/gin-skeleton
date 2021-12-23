@@ -3,7 +3,6 @@ package router
 import (
 	jwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
-	"github.com/vzina/gin-skeleton/config"
 	"github.com/vzina/gin-skeleton/controller"
 	"github.com/vzina/gin-skeleton/middleware"
 	"github.com/vzina/gin-skeleton/model"
@@ -11,9 +10,6 @@ import (
 
 // Route makes the routing
 func Route(app *gin.Engine) {
-	// error recovery
-	app.Use(middleware.GinLogger(), middleware.GinRecovery(config.Server.Mode == gin.DebugMode))
-
 	indexController := new(controller.IndexController)
 	app.GET(
 		"/", indexController.GetIndex,

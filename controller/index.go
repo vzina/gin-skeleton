@@ -1,16 +1,14 @@
 package controller
 
 import (
-	"github.com/vzina/gin-skeleton/config"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/vzina/gin-skeleton/config"
 )
 
 // IndexController is the default controller
-type IndexController struct{
-	BaseController
-}
+type IndexController struct{}
 
 // GetIndex home page
 func (ctrl *IndexController) GetIndex(c *gin.Context) {
@@ -22,9 +20,7 @@ func (ctrl *IndexController) GetIndex(c *gin.Context) {
 
 // GetVersion version json
 func (ctrl *IndexController) GetVersion(c *gin.Context) {
-	//panic(errno.ErrInvalidArgs)
-	//ctrl.JsonResponse(c, errno.ErrInvalidArgs)
-	ctrl.JsonResponse(c, gin.H{
+	c.JSON(http.StatusOK, gin.H{
 		"version": config.Server.Version,
 	})
 }

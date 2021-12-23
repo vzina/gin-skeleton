@@ -2,7 +2,6 @@ package model
 
 import (
 	"errors"
-	"github.com/vzina/gin-skeleton/errno"
 	"time"
 
 	"golang.org/x/crypto/bcrypt"
@@ -29,7 +28,7 @@ func (u *User) GetFirstByID(id string) error {
 	err := DB().Where("id=?", id).First(u).Error
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return errno.ErrDataNotFound
+		return ErrDataNotFound
 	}
 
 	return err
@@ -40,7 +39,7 @@ func (u *User) GetFirstByEmail(email string) error {
 	err := DB().Where("email=?", email).First(u).Error
 
 	if errors.Is(err, gorm.ErrRecordNotFound) {
-		return errno.ErrDataNotFound
+		return ErrDataNotFound
 	}
 
 	return err
@@ -53,7 +52,7 @@ func (u *User) Create() error {
 	if db.Error != nil {
 		return db.Error
 	} else if db.RowsAffected == 0 {
-		return errno.ErrKeyConflict
+		return ErrKeyConflict
 	}
 
 	return nil
@@ -65,8 +64,8 @@ func (u *User) Signup() error {
 	err := user.GetFirstByEmail(u.Email)
 
 	if err == nil {
-		return errno.ErrUserExists
-	} else if err != errno.ErrDataNotFound {
+		return ErrUserExists
+	} else if err != ErrDataNotFound {
 		return err
 	}
 
