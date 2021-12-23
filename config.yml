@@ -1,5 +1,5 @@
 server:
-  version: v0.1
+  version: v0.2
   addr: :8080
   mode: release
   static_dir: ./public
