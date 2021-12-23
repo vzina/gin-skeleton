@@ -5,7 +5,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/vzina/gin-skeleton/config"
-	"github.com/rs/zerolog/log"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -42,7 +41,7 @@ func dbInit() interface{} {
 
 	db, err := gorm.Open(mysql.Open(config.Database.DSN), cfg)
 	if err != nil {
-		log.Fatal().Err(err).Msg("Cannot connect to database")
+		panic("Cannot connect to database")
 	}
 
 	stdDB, _ := db.DB()

@@ -15,6 +15,7 @@ var ConfigFile = "./config.yml"
 type GlobalConfig struct {
 	Server   ServerConfig   `yaml:"server"`
 	Database DatabaseConfig `yaml:"database"`
+	LogConfig LogConfig `yaml:"logger"`
 }
 
 // ServerConfig is the server config
@@ -35,11 +36,21 @@ type DatabaseConfig struct {
 	MaxOpenConns int    `yaml:"max_open_conns"`
 }
 
+
+type LogConfig struct {
+	Level string `yaml:"level"`
+	Filename string `yaml:"filename"`
+	MaxSize int `yaml:"maxsize"`
+	MaxAge int `yaml:"max_age"`
+	MaxBackups int `yaml:"max_backups"`
+}
+
 // global configs
 var (
 	Global   GlobalConfig
 	Server   ServerConfig
 	Database DatabaseConfig
+	LoggerConfig LogConfig
 )
 
 // Load config from file
@@ -58,6 +69,7 @@ func Load(file string) (GlobalConfig, error) {
 
 	Server = Global.Server
 	Database = Global.Database
+	LoggerConfig = Global.LogConfig
 
 	return Global, nil
 }

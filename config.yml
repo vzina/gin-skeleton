@@ -1,7 +1,7 @@
 server:
   version: v0.1
   addr: :8080
-  mode: debug
+  mode: release
   static_dir: ./public
   view_dir: ./view
   upload_dir: ./storage
@@ -9,8 +9,15 @@ server:
 
 database:
   dialect: mysql
-  datasource: root:@tcp(localhost:3306)/gin?charset=utf8mb4&timeout=10s&parseTime=True
+  datasource: root:@tcp(127.0.0.1:3306)/test?charset=utf8mb4&timeout=10s&parseTime=True
   dir: sql
   table: migrations
   max_idle_conns: 2
   max_open_conns: 16
+
+logger:
+  level: debug
+  filename: ./logs/app.log
+  maxsize: 100
+  max_age: 7
+  max_backups: 10

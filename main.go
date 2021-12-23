@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"github.com/vzina/gin-skeleton/middleware"
 	"path/filepath"
 
 	"github.com/gin-gonic/gin"
@@ -16,6 +18,12 @@ func main() {
 
 	if config.Server.Mode == gin.ReleaseMode {
 		gin.DisableConsoleColor()
+	}
+
+	// init logger
+	if err := middleware.InitLogger(config.LoggerConfig); err != nil {
+		fmt.Printf("init logger failed, err:%v\n", err)
+		return
 	}
 
 	app := gin.Default()
